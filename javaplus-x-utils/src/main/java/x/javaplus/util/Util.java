@@ -16,6 +16,18 @@ import x.javaplus.collections.Lists;
 
 public class Util {
 	
+	public static final class Sleep {
+		
+		public static void sleep(){
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
 	public static final class Check {
 		
 		public static void isNull( Object ...objects ) {
