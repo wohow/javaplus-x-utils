@@ -1,14 +1,10 @@
 package cn.xgame.gen;
 
-import java.util.List;
 
 import cn.xgame.gen.dto.MysqlGen.RaanlDao;
 import cn.xgame.gen.dto.MysqlGen.RaanlDto;
-import cn.xgame.gen.dto.MysqlGen.RoleDao;
-import cn.xgame.gen.dto.MysqlGen.RoleDto;
 import cn.xgame.gen.dto.MysqlGen.SqlUtil;
 
-import x.javaplus.mysql.db.Condition;
 import x.javaplus.mysql.db.Dbcp;
 
 
@@ -59,6 +55,8 @@ public class MysqlUseTest {
 		RaanlDto dto = dao.create();
 		dto.setId( "103" );
 		dto.setName( "大峰哥" );
+		dto.setMax_grad( 1 );
+		
 		dao.commit( dto );
 		
 		System.out.println( Dbcp.toMessage() );
