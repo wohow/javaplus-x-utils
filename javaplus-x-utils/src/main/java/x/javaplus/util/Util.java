@@ -11,6 +11,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.util.List;
+import java.util.zip.CRC32;
 
 import x.javaplus.collections.Lists;
 
@@ -318,5 +319,114 @@ public class Util {
 			return ts;
 		}
 	}
+	
+	
+	public static final class CRC{
+		
+		private static CRC32 crc = new CRC32();
+		
+		/**
+		 * 获取一个 32位  的数字
+		 * @param str
+		 * @return
+		 */
+		public static long update( String str ){
+			crc.update( str.getBytes() );
+			return crc.getValue();
+		}
+		
+		/**
+		 * 获取一个 固定长度为9的数字
+		 * @param str
+		 * @return
+		 */
+		public static long update_9( String str ){
+			crc.update( str.getBytes() );
+			return toNew( crc.getValue() );
+		}
+		private static int toNew( long value ){
+			
+			int newVlaue 	= 0;
+		    int length		= String.valueOf( value ).length();
+		    
+		    int l 			= Math.abs( length - 9 );
+	    	int xx			= (int) Math.pow( 10, l );
+		    if( length > 9 ) {
+		    	newVlaue	= (int) (value / xx);
+		    }else if( length < 9 ){
+		    	newVlaue	= (int) (value * xx);
+		    }else{
+		    	newVlaue	= (int) value;
+		    }
+		    
+			return newVlaue;
+		}
+		
+	}
+	
+	public static final class Random{
+		
+		private static final java.util.Random random = new java.util.Random();
+		
+		/** min和max都必须大于0    <br> 
+		 * 在min和max中随机一个数字，包括上下限[min,max] 
+		 * */
+		public static int get( int min, int max ) {
+			
+			if( min < 0 || max == Integer.MAX_VALUE )
+				throw new IllegalArgumentException( "随机数下限不得<0，上限不得>=2的32次方" );
+			
+			++max;
+			int n = max - min;
+			if( n <= 0 ) n = 1;
+			
+			int ret = random.nextInt( n );
+			return min + ret;
+		}
+	}
+	
+	/** 验证码 */
+	public static final class Captcha{
+		
+		/**
+		 * 生成一个 验证码
+		 * @param cpassword 协商密码
+		 * @return
+		 */
+		public static String generateCode( Object cpassword ){
+			// 获取一个 随机密码
+			String rand_password 	= randomPassword();
+			// 随机密码  + 协商密码
+			String md5				= MD5.md5( rand_password + cpassword.toString() );
+			// md5 + 随机密码 
+			return md5 + rand_password;
+		}
+		
+		/**
+		 * 验证 验证码 是否正确
+		 * @param key 需要验证的 验证码
+		 * @param cpassword 协商密码
+		 * @return
+		 */
+		public static boolean verify( String key, Object cpassword ){
+			String rand_password 	= key.substring( key.length()-6, key.length());
+			String rawMd5			= key.substring( 0, key.length()-6 );
+			String nowMd5			= MD5.md5( rand_password + cpassword.toString() );
+			return rawMd5.equals( nowMd5 );
+		}
+		
+		private static String randomPassword() {
+			int len 	= 6;
+			String ret 	= "";
+			char [] x 	= MD5.getLookUpHexAlphabet();
+			while( len-- > 0 ){
+				int index = Random.get( 0, x.length - 1 );
+				ret += x[index];
+			}
+			return ret;
+		}
+		
+	}
+	
 	
 }
