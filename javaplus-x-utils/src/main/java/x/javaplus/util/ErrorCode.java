@@ -11,7 +11,8 @@ import java.util.Map;
 public enum ErrorCode {
 
 	/** 10001 - 账号或者密码错误 */
-	AORP_ERROR( 10001, "账号或者密码错误" ),
+	AORP_ERROR( 10001, "" +
+			"" ),
 	/** 10002 - 账号已经存在 */
 	ACCOUNT_EXIST( 10002, "账号已经存在" ),
 	

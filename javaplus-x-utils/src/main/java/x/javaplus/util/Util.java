@@ -11,6 +11,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.util.List;
+import java.util.Properties;
 import java.util.zip.CRC32;
 
 import x.javaplus.collections.Lists;
@@ -304,6 +305,36 @@ public class Util {
 		}
 
 	}
+	
+	public static final class Propertie {
+		
+		/**
+		 * 根据 文件名 获取文件
+		 * @param name
+		 * @return
+		 */
+		public static Properties loadProperty( String name ){
+			
+			if ( null == name || name.isEmpty() )
+				throw new IllegalArgumentException( "Properties file path can not be null : " + name );
+			
+			Properties properties = null;
+			InputStream input = null;
+			try {
+				properties	= new Properties();
+				URL url 	= Resources.getResource( name );
+				input 		= url.openStream();
+				properties.load( input );
+			
+			} catch (FileNotFoundException e) { e.printStackTrace();
+			} catch (IOException e) { e.printStackTrace(); }
+			finally {
+				Closer.close( input );
+			}
+			return properties;
+		}
+	}
+	
 	
 	public static final class Collection {
 		
