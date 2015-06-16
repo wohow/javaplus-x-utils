@@ -10,6 +10,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Properties;
 import java.util.zip.CRC32;
@@ -459,5 +461,61 @@ public class Util {
 		
 	}
 	
+	public static final class Time{
+		
+		/**====================================== 计时工具 ======================================*/
+		private volatile static long l1;
+		public static void beginTimer(){ l1 = System.nanoTime(); }
+		public static float endTimer(){ return (System.nanoTime() - l1) / 1000000f; }
+		public static void endTimerToPrint(){ System.out.println( " 逻辑耗时：" + ((System.nanoTime() - l1) / 1000000f) + "毫秒"  ); }
+		
+
+		
+		/** =============================将时间转成字符串  把一个用秒数保存的时间值转换为易读的字符串 =============================== */
+		public static String refFormatDate( long millis ){ return new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss" ).format( millis );  }
+		public static String refFormatDate( ){ return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format( System.currentTimeMillis() ); }
+		public static String refFormatDate( long millis, String pattern ){ return new SimpleDateFormat( pattern ).format( millis ); }//可以方便地修改日期格式
+		public static String refFormatDate( String pattern ){ return new SimpleDateFormat( pattern ).format( System.currentTimeMillis() ); }
+		
+		
+		
+		/** ===================计算从当前时间，满足条件 hourOfDay, minuteOfHour, secondOfMinite的最近时间 =========================*/
+		public static long refTimeInMillis( int hourOfDay, int minuteOfHour, int secondOfMinite ){
+			Calendar calendar = Calendar.getInstance();
+			if( hourOfDay != -1 ) calendar.set( Calendar.HOUR_OF_DAY, hourOfDay );
+			if( minuteOfHour != -1 ) calendar.set( Calendar.MINUTE, minuteOfHour );
+			if( secondOfMinite != -1 ) calendar.set( Calendar.SECOND, secondOfMinite );
+			calendar.set( Calendar.MILLISECOND, 0 );
+			return calendar.getTimeInMillis();
+		}
+		public static long refTimeInMillis( long currentTime, int hourOfDay, int minuteOfHour, int secondOfMinite ) {
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTimeInMillis( currentTime );
+			if( hourOfDay != -1 ) calendar.set( Calendar.HOUR_OF_DAY, hourOfDay );
+			if( minuteOfHour != -1 ) calendar.set( Calendar.MINUTE, minuteOfHour );
+			if( secondOfMinite != -1 ) calendar.set( Calendar.SECOND, secondOfMinite );
+			calendar.set( Calendar.MILLISECOND, 0 );
+			return calendar.getTimeInMillis();
+		}
+		
+		
+		
+		/**=============================================== 获得当前星期 ==========================================================*/
+		public static byte currentWeek( long currentTimeMillis ){
+			Calendar cal = Calendar.getInstance();
+			cal.setTimeInMillis( currentTimeMillis );
+			return (byte) ( cal.get(Calendar.DAY_OF_WEEK) == 1 ? 7 : (cal.get(Calendar.DAY_OF_WEEK) - 1) );
+		}
+		public static byte currentWeek(){
+			Calendar cal = Calendar.getInstance();
+			return (byte) ( cal.get(Calendar.DAY_OF_WEEK) == 1 ? 7 : (cal.get(Calendar.DAY_OF_WEEK) - 1) );
+		}
+		
+		/** 到凌晨还剩余多少时间 */
+		public static long toWeehoursTime() {
+			return refTimeInMillis( 24, 0, 0 ) - System.currentTimeMillis();
+		}
+		
+	}
 	
 }
