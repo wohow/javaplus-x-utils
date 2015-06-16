@@ -1,9 +1,9 @@
 package x.javaplus.mysql.db;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -47,8 +47,7 @@ public class Dbcp {
 		Properties properties = new Properties();
 		try {
 			
-			URL url = Resources.getResource( configName );
-			InputStream input = url.openStream();
+			InputStream input = new FileInputStream( Resources.getResource( configName ) );
 			properties.load( input );
 			input.close();
 		

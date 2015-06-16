@@ -324,8 +324,7 @@ public class Util {
 			InputStream input = null;
 			try {
 				properties	= new Properties();
-				URL url 	= Resources.getResource( name );
-				input 		= url.openStream();
+				input 		= new FileInputStream( Resources.getResource( name ) );
 				properties.load( input );
 			
 			} catch (FileNotFoundException e) { e.printStackTrace();

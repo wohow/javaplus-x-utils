@@ -28,7 +28,7 @@ public class Config {
 
 	private static void resolveTemplets() {
 		templets = new HashMap<String, String>();
-		URL url = Resources.getResource("templets");
+		URL url = Resources.getUrl("templets");
 		String content = Util.File.getContent(url);
 		String[] split = content.split("\\-{3,100}");
 

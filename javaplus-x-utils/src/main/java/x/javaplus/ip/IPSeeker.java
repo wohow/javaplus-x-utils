@@ -101,7 +101,7 @@ public class IPSeeker {
      * @throws IOException 
      */
     public void init(String ipDataFile) {
-		IP_FILE = Resources.getResource( ipDataFile ).getPath();
+		IP_FILE = Resources.getResource( ipDataFile );
     	ipCache = new HashMap<String, IPLocation>();
         loc = new IPLocation();
         buf = new byte[100];
