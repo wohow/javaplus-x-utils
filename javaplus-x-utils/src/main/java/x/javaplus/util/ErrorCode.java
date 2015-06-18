@@ -11,12 +11,19 @@ import java.util.Map;
 public enum ErrorCode {
 
 	/** 10001 - 账号或者密码错误 */
-	AORP_ERROR( 10001, "" +
-			"" ),
+	AORP_ERROR( 10001, "账号或者密码错误" ),
 	/** 10002 - 账号已经存在 */
 	ACCOUNT_EXIST( 10002, "账号已经存在" ),
 	
 	
+	/** 11001 - 登录验证码错误 */
+	LKEY_ERROR( 11001, "验证码错误" ),
+	/** 11002 - 玩家尚未注册 */
+	PLAYER_NOTFOUND( 11002, "玩家尚未注册" ),
+	/** 11003 - 名字含有非法字 */
+	HAVE_ILLEGALITY( 11003, "名字含有非法字" ),
+	/** 11004 - 名字已存在 */
+	NAME_REPEAT( 11004, "名字已存在" ),
 	
 	
 	

@@ -33,6 +33,10 @@ public class App {
 		new MysqlGenerator( dtoPath, dstPath, packageName );
 	}
 
+	/**
+	 * 生成mysql数据库
+	 * @param args
+	 */
 	public static void generateMysql( String args ) {
 		
 		try {

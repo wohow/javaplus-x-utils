@@ -418,14 +418,14 @@ public class Util {
 	}
 	
 	/** 验证码 */
-	public static final class Captcha{
+	public static final class Key{
 		
 		/**
 		 * 生成一个 验证码
 		 * @param cpassword 协商密码
 		 * @return
 		 */
-		public static String generateCode( Object cpassword ){
+		public static String generateKey( Object cpassword ){
 			// 获取一个 随机密码
 			String rand_password 	= randomPassword();
 			// 随机密码  + 协商密码
