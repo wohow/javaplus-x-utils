@@ -115,6 +115,13 @@ public class DBObject {
 			return 0;
 		}
 	}
+	public int getInt( int x ) {
+		try {
+			return ret.getInt( x );
+		} catch (SQLException e) {
+			return 0;
+		}
+	}
 	public float getFloat( String x ) {
 		try {
 			return ret.getFloat( x );

@@ -1,6 +1,7 @@
 TempletName:MYSQL_GEN
 package PACKAGE_NAME;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import x.javaplus.collections.Lists;
@@ -51,6 +52,24 @@ public class CLASS_NAME {
 	 *
 	 */
 	public static final class SqlUtil {
+		
+		/**
+		 * 获取数据库某张表的最大id
+		 * @param tableName
+		 * @param col
+		 * @param criteria 条件
+		 * @return
+		 * @throws SQLException
+		 */
+		public static int getMaxId( String tableName, String col, String criteria ) throws SQLException{
+			DBObject db = DBObject.create();
+			db.prepareStatement( "select max(" + col + ") from " + tableName + " where " + criteria );
+			db.executeQuery();
+			if ( db.next())
+				return db.getInt( 1 );
+			db.close();
+			return 0;
+		}
 		
 APPEND GET_DAO
 	}
