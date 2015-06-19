@@ -65,34 +65,34 @@ public class CsvGenerator {
 		temp.set( "VAR_NAME", className.toLowerCase() + "s" );
 		temp.set( "DATA_NAME", csv.getNames().get(0) );
 		temp.set( "VAR_TYPE", csv.getTypes().get(0).type() );
-		print.print( temp.toString() );
+		print.print( temp.toString().replaceAll("\r{2,50}", "\r") );
 	}
 
 	private void generatorFun(StringPrinter print, String className ) {
 		Templet temp 		= Config.getTemplet( "CSV_LOADFUN" );
 		temp.set( "CLASS_NAME", className );
 		temp.set( "VAR_NAME", className.toLowerCase() + "s" );
-		print.print( temp.toString() );
+		print.print( temp.toString().replaceAll("\r{2,50}", "\r") );
 	}
 
 	private void generatorLfun( StringPrinter print, String className, String fileName ) {
 		Templet temp 		= Config.getTemplet( "CSV_LOADFUN_TO" );
 		temp.set( "CLASS_NAME", className );
 		temp.set( "FILE_NAME", fileName );
-		print.print( temp.toString() );
+		print.print( temp.toString().replaceAll("\r{2,50}", "\r") );
 	}
 
 	private void generatorPfinal(StringPrinter print, String className ) {
 		Templet temp 		= Config.getTemplet( "PRIVATE_FINAL" );
 		temp.set( "CLASS_NAME", className );
 		temp.set( "VAR_NAME", className.toLowerCase() + "s" );
-		print.print( temp.toString() );
+		print.print( temp.toString().replaceAll("\r{2,50}", "\r") );
 	}
 
 	private void generatorImport( StringPrinter print, String packageName ) {
 		Templet temp 		= Config.getTemplet( "IMPORT" );
 		temp.set( "PACKAGE_NAME", packageName );
-		print.print( temp.toString() );
+		print.println( temp.toString().trim() );
 	}
 
 }

@@ -225,9 +225,7 @@ import x.javaplus.csv.util.Csv;
 
 import cn.xgame.a.system.SystemCfg;
 APPEND IMPORT
-
 public class CLASS_NAME {
-
 APPEND PRIVATE_FINAL
 	public static void load(){
 APPEND CSV_LOADFUN_TO
