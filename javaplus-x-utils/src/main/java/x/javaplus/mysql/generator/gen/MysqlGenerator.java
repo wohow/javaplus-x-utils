@@ -2,8 +2,9 @@ package x.javaplus.mysql.generator.gen;
 
 import java.util.List;
 
-import x.javaplus.util.Templet;
 import x.javaplus.util.Util;
+import x.javaplus.util.templet.Config;
+import x.javaplus.util.templet.Templet;
 
 
 public class MysqlGenerator {

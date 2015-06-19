@@ -1,10 +1,12 @@
-package x.javaplus.util;
+package x.javaplus.util.templet;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import x.javaplus.string.StringPrinter;
+import x.javaplus.util.Resources;
+import x.javaplus.util.Util;
 
 
 /**

@@ -6,7 +6,7 @@ import japa.parser.ast.body.TypeDeclaration;
 
 import java.util.List;
 
-import x.javaplus.mysql.generator.gen.Field;
+import x.javaplus.util.templet.Field;
 
 
 

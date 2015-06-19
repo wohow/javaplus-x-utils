@@ -1,5 +1,6 @@
-package x.javaplus.mysql.generator.gen;
+package x.javaplus.util.templet;
 
+import x.javaplus.string.StringUtil;
 import japa.parser.ast.body.BodyDeclaration;
 
 public class Field {
@@ -33,13 +34,13 @@ public class Field {
 		type		= temp.substring( 0, temp.indexOf( " " ) );
 		type		= changeToFunname( type );
 		
-		char a 		= name.charAt(0);
-		char b		= (char) (Character.isLowerCase(a) ? a-32 : a);
-		funName		= name.replaceFirst( a+"", b+"" );
+//		char a 		= name.charAt(0);
+//		char b		= (char) (Character.isLowerCase(a) ? a-32 : a);
+		funName		= StringUtil.firstToUpper(name);
 		
-		a 			= type.charAt(0);
-		b			= (char) (Character.isLowerCase(a) ? a-32 : a);
-		typeName	= type.replaceFirst( a+"", b+"" );
+//		a 			= type.charAt(0);
+//		b			= (char) (Character.isLowerCase(a) ? a-32 : a);
+		typeName	= StringUtil.firstToUpper(type);;
 		typeName	= typeName.replaceAll( "\\[]", "s" );
 		
 		type		= changeToCalss( type );

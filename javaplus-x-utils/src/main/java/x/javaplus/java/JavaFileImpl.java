@@ -12,7 +12,7 @@ import java.io.File;
 import java.util.List;
 
 import x.javaplus.collections.Lists;
-import x.javaplus.mysql.generator.gen.Field;
+import x.javaplus.util.templet.Field;
 
 
 public class JavaFileImpl implements JavaFile {

@@ -4,9 +4,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 import x.javaplus.mysql.db.DBObject;
-import x.javaplus.mysql.generator.gen.Config;
 import x.javaplus.mysql.generator.gen.Dto;
-import x.javaplus.mysql.generator.gen.Field;
+import x.javaplus.util.templet.Config;
+import x.javaplus.util.templet.Field;
 
 public class Mysql {
 

@@ -1,4 +1,4 @@
-package x.javaplus.mysql.generator.gen;
+package x.javaplus.util.templet;
 
 import java.io.File;
 import java.net.URL;
@@ -9,8 +9,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import x.javaplus.collections.Lists;
+import x.javaplus.mysql.generator.gen.Dto;
 import x.javaplus.util.Resources;
-import x.javaplus.util.Templet;
 import x.javaplus.util.Util;
 
 

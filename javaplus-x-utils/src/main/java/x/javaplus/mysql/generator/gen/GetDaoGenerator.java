@@ -3,7 +3,8 @@ package x.javaplus.mysql.generator.gen;
 import java.util.List;
 
 import x.javaplus.string.StringPrinter;
-import x.javaplus.util.Templet;
+import x.javaplus.util.templet.Config;
+import x.javaplus.util.templet.Templet;
 
 public class GetDaoGenerator {
 

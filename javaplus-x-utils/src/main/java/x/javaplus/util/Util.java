@@ -257,6 +257,33 @@ public class Util {
 			return files;
 		}
 		
+		
+		/**
+		 * 获取某个文件夹下，指定类型的文件
+		 * @param path
+		 * @param regex
+		 * @return
+		 */
+		public static List<java.io.File> getFiles( String path, String regex ){
+			List<java.io.File> files = Lists.newArrayList();
+			java.io.File f = new java.io.File(path);
+			String[] all = f.list();
+
+			if (all != null) {
+				for (String fname : all) {
+					java.io.File fs = new java.io.File(path + "/" + fname);
+					if (fs.isDirectory()) {
+						files.addAll( getFiles(path + "/" + fname, regex ) );
+					} else if( fs.getName().toLowerCase().endsWith( "."+regex.toLowerCase() ) ){
+						
+						files.add(fs);
+					}
+				}
+			}
+			
+			return files;
+		}
+		
 		/**
 		 * 获得某个文件中所有的行
 		 * 

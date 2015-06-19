@@ -13,6 +13,7 @@ import x.javaplus.collections.Lists;
 import x.javaplus.java.JavaFile;
 import x.javaplus.java.JavaFileImpl;
 import x.javaplus.util.Util.Collection;
+import x.javaplus.util.templet.Field;
 
 /**
  * 数据库 传输层对象
