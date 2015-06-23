@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import x.javaplus.util.Resources;
-
 
 /**
 *  * 用来读取QQwry.dat文件，以根据ip获得好友位置，QQwry.dat的格式是
@@ -101,7 +99,7 @@ public class IPSeeker {
      * @throws IOException 
      */
     public void init(String ipDataFile) {
-		IP_FILE = Resources.getResource( ipDataFile );
+		IP_FILE = ipDataFile;
     	ipCache = new HashMap<String, IPLocation>();
         loc = new IPLocation();
         buf = new byte[100];
