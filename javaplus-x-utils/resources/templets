@@ -76,7 +76,7 @@ public class CLASS_NAME {
 		 * @param tableName
 		 * @return
 		 */
-		public static long getCount( String tableName ){
+		public static long getCount( String tableName ) throws SQLException {
 			DBObject db = DBObject.create();
 			db.prepareStatement( "select COUNT(*) from " + tableName );
 			db.executeQuery();
