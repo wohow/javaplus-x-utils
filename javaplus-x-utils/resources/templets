@@ -71,6 +71,25 @@ public class CLASS_NAME {
 			return 0;
 		}
 		
+		/**
+		 * 获取某张表的数据总数
+		 * @param tableName
+		 * @return
+		 */
+		public static long getCount( String tableName ){
+			DBObject db = DBObject.create();
+			db.prepareStatement( "select COUNT(*) from " + tableName );
+			db.executeQuery();
+			if ( db.next() )
+				return db.getLong( 1 );
+			db.close();
+			return 0;
+		}
+		
+		@SuppressWarnings("rawtypes")
+		public static String getClassName( Class clzss ) {
+			return clzss.getSimpleName().replaceAll("Dto", "").toLowerCase();
+		}
 APPEND GET_DAO
 	}
 	
