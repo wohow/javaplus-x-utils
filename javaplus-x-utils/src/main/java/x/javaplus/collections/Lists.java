@@ -13,7 +13,7 @@ public class Lists {
 		return new ArrayList<T>(ls);
 	}
 
-	public static <T> List<T> newArrayList(T... ls) {
+	public static <T> List<T> newArrayList( T... ls ) {
 		ArrayList<T> a = new ArrayList<T>();
 		for (T t : ls) {
 			a.add(t);

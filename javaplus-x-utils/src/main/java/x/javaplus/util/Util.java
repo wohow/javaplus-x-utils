@@ -20,6 +20,11 @@ import x.javaplus.collections.Lists;
 
 public class Util {
 	
+	public static byte[] copy( byte[] value ) {
+		return java.util.Arrays.copyOf( value, value.length );
+	}
+	
+	
 	public static final class Sleep {
 		
 		public static void sleep(){
@@ -43,29 +48,25 @@ public class Util {
 		
 	}
 	
-	public static byte[] copy( byte[] value ) {
-		return java.util.Arrays.copyOf( value, value.length );
-	}
-	
 	/**
 	 * byte数组操作
 	 * @author deng
 	 */
-	public static class Byte {
+	public static class Bytes {
 
 		/**
 		 * 数据源
 		 * 0000 0000
 		 */
 		private byte data[];
-		private Byte( int capacity ){
+		private Bytes( int capacity ){
 			data = new byte[capacity];
 		}
 		
 		/**
 		 */
-		public static Byte create( int capacity ){
-			return new Byte( capacity );
+		public static Bytes create( int capacity ){
+			return new Bytes( capacity );
 		}
 		
 		public void set( int index, int isopen ){
