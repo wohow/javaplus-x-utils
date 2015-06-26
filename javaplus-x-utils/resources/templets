@@ -290,6 +290,9 @@ import x.javaplus.string.StringUtil;
 
 public class CLASS_NAME {
 APPEND FIELDS_PUBLIC_FINAL
+	public CLASS_NAME( CLASS_NAME clone ){
+APPEND SET_CLONE
+	}
 	public CLASS_NAME( Map<String, String> data ){
 APPEND SET_VAR
 	}
@@ -300,3 +303,6 @@ TempletName:FIELDS_PUBLIC_FINAL
 ------------------------------------------------------------
 TempletName:SET_VAR
 		NAME = TYPE_PARSE;
+------------------------------------------------------------
+TempletName:SET_CLONE
+		this.NAME = clone.NAME;

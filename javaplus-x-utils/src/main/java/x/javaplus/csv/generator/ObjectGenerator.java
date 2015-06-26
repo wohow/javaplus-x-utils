@@ -28,6 +28,7 @@ public class ObjectGenerator {
 			List<CsvType> types = csv.getTypes();
 			
 			temp.append( "FIELDS_PUBLIC_FINAL", generatorPublicVar( names, types ) );
+			temp.append( "SET_CLONE", generatorSetVarClone( names ) );
 			temp.append( "SET_VAR", generatorSetVar( names, types ) );
 			
 			String content = temp.toString().trim();
@@ -35,6 +36,24 @@ public class ObjectGenerator {
 			Util.File.write( oPath+"/"+className+".java", content );
 		} 
 		
+	}
+
+	private String generatorSetVarClone( List<String> names ) {
+		StringPrinter print = new StringPrinter();
+		Templet temp = Config.getTemplet( "SET_CLONE" );
+		
+		for( int i = 0; i < names.size(); i++ ){
+			
+			temp.set( "NAME", names.get(i) );
+			
+			if( i == names.size()-1 )
+				print.println( temp.toString() );
+			else
+				print.print( temp.toString() );
+			temp.clear();
+		}
+		
+		return print.toString();
 	}
 
 	private String generatorPublicVar( List<String> names, List<CsvType> types ) {
