@@ -132,8 +132,8 @@ TempletName:DAO
 			super( tableName );
 		}
 		
-		public CLASS_NAMEDto get( String id ) {
-			super.select( id, true );
+		public CLASS_NAMEDto get( VARID_TYPE id ) {
+			super.select( VARID_NAME, true );
 			if( next() ){
 				CLASS_NAMEDto x = new CLASS_NAMEDto();
 				x.fromDBObject( getObject() );
@@ -142,8 +142,8 @@ TempletName:DAO
 			return null;
 		}
 		
-		public List<CLASS_NAMEDto> getAll( String id ) {
-			super.select( id, false );
+		public List<CLASS_NAMEDto> getAll( VARID_TYPE id ) {
+			super.select( VARID_NAME, false );
 			return getLs();
 		}
 

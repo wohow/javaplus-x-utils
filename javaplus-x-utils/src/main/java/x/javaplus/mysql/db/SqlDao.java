@@ -30,7 +30,7 @@ public class SqlDao {
 	protected void select( String arg, boolean isUpdate ) {
 		type = SELECT;
 		try {
-			String sql = "SELECT * FROM " + tableName + " WHERE id='" + arg + "'";
+			String sql = "SELECT * FROM " + tableName + " WHERE id=" + arg;
 			o.prepareStatement( sql);
 			o.executeQuery();
 			if( isUpdate )

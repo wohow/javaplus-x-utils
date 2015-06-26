@@ -34,13 +34,9 @@ public class Field {
 		type		= temp.substring( 0, temp.indexOf( " " ) );
 		type		= changeToFunname( type );
 		
-//		char a 		= name.charAt(0);
-//		char b		= (char) (Character.isLowerCase(a) ? a-32 : a);
 		funName		= StringUtil.firstToUpper(name);
 		
-//		a 			= type.charAt(0);
-//		b			= (char) (Character.isLowerCase(a) ? a-32 : a);
-		typeName	= StringUtil.firstToUpper(type);;
+		typeName	= StringUtil.firstToUpper(type);
 		typeName	= typeName.replaceAll( "\\[]", "s" );
 		
 		type		= changeToCalss( type );

@@ -25,10 +25,21 @@ public class DaoGenerator {
 			List<Field> vars = dto.getVariablesAll();
 			StringPrinter setobject	= new StringPrinter();
 			
+			String type = "String";
+			String varName = "\"'\"+id+\"'\"";
+			
 			for( Field var : vars ){
 				generatorSetobject( setobject, var );
+				if( var.getName().equals( "id" ) ){
+					if( !var.getType().equals( type ) ){
+						type = var.getType();
+						varName = "String.valueOf(id)";
+					}
+				}
 			}
 			
+			temp.set( "VARID_TYPE", type );
+			temp.set( "VARID_NAME", varName );
 			temp.append( "SETOBJECT", setobject.toString() );
 			
 			ret.println( temp.toString().replaceAll("\r{2,50}", "\r") );
