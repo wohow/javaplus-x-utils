@@ -33,7 +33,6 @@ public class Dbcp {
 	
 	private final static Log 		logger 		= LogFactory.getLog(Dbcp.class);
 	
-	
 	// 静态初始化
 	static {
 		initialize();
@@ -71,10 +70,10 @@ public class Dbcp {
 		DruidPooledConnection conn = null;
 		try {
 			
-			conn = dataSource.getConnection();
+			conn 	= dataSource.getConnection();
 			
 			logger.debug( prefixion() + "get connection, " + dataSource.getActiveCount() + "/" + dataSource.getMaxActive() );
-	
+			
 		} catch (SQLException e) { 
 			logger.error( prefixion() + "get connection error!", e );
 		}
