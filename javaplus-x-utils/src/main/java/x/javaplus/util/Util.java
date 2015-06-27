@@ -29,7 +29,15 @@ public class Util {
 		
 		public static void sleep(){
 			try {
-				Thread.sleep(5000);
+				Thread.sleep(0);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+
+		public static void sleep( long sleep ) {
+			try {
+				Thread.sleep(sleep);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

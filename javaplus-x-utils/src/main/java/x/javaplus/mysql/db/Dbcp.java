@@ -4,9 +4,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 import java.util.Properties;
 
@@ -17,19 +17,24 @@ import x.javaplus.util.Resources;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.DruidDataSourceFactory;
 import com.alibaba.druid.pool.DruidPooledConnection;
+import com.alibaba.druid.support.logging.Log;
+import com.alibaba.druid.support.logging.LogFactory;
 
 /**
- * Dbcp 是数据库连接池的总管理类 封装了对于连接池的相关操�?
+ * Dbcp 是数据库连接池的总管理类 封装了对于连接池的相关操作
  * 
  * @author deng
  */
 public class Dbcp {
 	private Dbcp() { }
 	
-	// 数据�?
-	private static DruidDataSource dataSource = null;
-
-	// 初始�?
+	// 数据库
+	private static DruidDataSource 	dataSource 	= null;
+	
+	private final static Log 		logger 		= LogFactory.getLog(Dbcp.class);
+	
+	
+	// 静态初始化
 	static {
 		initialize();
 	}
@@ -58,39 +63,43 @@ public class Dbcp {
 	}
 
 	/**
-	 *	从连接池中获取一个有效连�?
+	 *	从连接池中获取一个有效连接
 	 * @return
-	 * 		返回�?��可用数据库连�?
+	 * 		返回一个可用数据库连接
 	 */
 	public static DruidPooledConnection getConnection(){
 		DruidPooledConnection conn = null;
 		try {
+			
 			conn = dataSource.getConnection();
-		} catch (SQLException e) { e.printStackTrace(); }
-//		System.out.println( "返回Connection成功,当前连接数：" + dataSource.getActiveCount() + "/" + dataSource.getMaxActive() );
+			
+			logger.debug( prefixion() + "get connection, " + dataSource.getActiveCount() + "/" + dataSource.getMaxActive() );
+	
+		} catch (SQLException e) { 
+			logger.error( prefixion() + "get connection error!", e );
+		}
 		return conn;
 	}
 
 	public static String toMessage(){
-		return "当前连接数：" + dataSource.getActiveCount() + "/" + dataSource.getMaxActive() ;
+		return "current connections:" + dataSource.getActiveCount() + "/" + dataSource.getMaxActive() ;
 	}
 	
 	/**
-	 * 关闭本次查询�?��的打�?��资源，除了rs，其余两个资源应该不可能为null，有待�?�?
+	 * 关闭本次连接
 	 * @param rs
 	 * @param st
 	 * @param con
 	 */
-	public static void close( ResultSet rs, Statement st, DruidPooledConnection con ){
+	public static void close( ResultSet rs, PreparedStatement st, DruidPooledConnection con ){
 		try {
-			if( rs != null )
-				rs.close();
-			if( st != null )
-				st.close();
-			if( con != null )
-				con.close();
-//			System.out.println( "释放Connection成功，当前连接数�? + dataSource.getActiveCount() + "/" + dataSource.getMaxActive() );
-		} catch (SQLException e) { e.printStackTrace(); }
+			if( con != null ) con.close();
+			if( st != null ) st.close();
+			if( rs != null ) rs.close();
+			logger.debug( prefixion() + "close connection, " + dataSource.getActiveCount() + "/" + dataSource.getMaxActive() );
+		} catch (SQLException e) { 
+			logger.error( prefixion() + "close connection error!", e );
+		}
 	}
 	
 	/**
@@ -147,5 +156,8 @@ public class Dbcp {
 		return false;
 	}
 	
-
+	// 前缀
+	private static String prefixion(){
+		return "[ Dbcp ]: ";
+	}
 }

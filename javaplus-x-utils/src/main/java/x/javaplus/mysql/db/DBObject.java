@@ -45,11 +45,7 @@ public class DBObject {
 	}
 	
 	public void close() {
-		try {
-			if( con != null ) con.close();
-			if( pst != null ) pst.close();
-			if( ret != null ) ret.close();
-		} catch (SQLException e) { e.printStackTrace(); }
+		Dbcp.close( ret, pst, con );
 	}
 	
 	public boolean next() throws SQLException {
