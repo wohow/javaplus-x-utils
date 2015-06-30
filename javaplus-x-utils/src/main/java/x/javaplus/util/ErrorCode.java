@@ -27,7 +27,8 @@ public enum ErrorCode {
 	/** 11004 - 名字已存在 */
 	NAME_REPEAT( 11004, "名字已存在" ),
 	
-	
+	/** 11101 - 星球不存在 */
+	PLANET_NOTEXIST( 11101, "星球不存在" ),
 	
 	
 	

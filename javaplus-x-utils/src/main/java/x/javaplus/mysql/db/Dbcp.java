@@ -72,7 +72,7 @@ public class Dbcp {
 			
 			conn 	= dataSource.getConnection();
 			
-			logger.debug( prefixion() + "get connection, " + dataSource.getActiveCount() + "/" + dataSource.getMaxActive() );
+//			logger.debug( prefixion() + "get connection, " + dataSource.getActiveCount() + "/" + dataSource.getMaxActive() );
 			
 		} catch (SQLException e) { 
 			logger.error( prefixion() + "get connection error!", e );
@@ -80,8 +80,11 @@ public class Dbcp {
 		return conn;
 	}
 
-	public static String toMessage(){
-		return "current connections:" + dataSource.getActiveCount() + "/" + dataSource.getMaxActive() ;
+	/**
+	 * 打印 数据库 当前使用情况
+	 */
+	public static void print(){
+		logger.debug( prefixion() + "current connections:" + dataSource.getActiveCount() + "/" + dataSource.getMaxActive() );
 	}
 	
 	/**
@@ -92,10 +95,13 @@ public class Dbcp {
 	 */
 	public static void close( ResultSet rs, PreparedStatement st, DruidPooledConnection con ){
 		try {
+			
 			if( con != null ) con.close();
 			if( st != null ) st.close();
 			if( rs != null ) rs.close();
-			logger.debug( prefixion() + "close connection, " + dataSource.getActiveCount() + "/" + dataSource.getMaxActive() );
+			
+//			logger.debug( prefixion() + "close connection, " + dataSource.getActiveCount() + "/" + dataSource.getMaxActive() );
+		
 		} catch (SQLException e) { 
 			logger.error( prefixion() + "close connection error!", e );
 		}
