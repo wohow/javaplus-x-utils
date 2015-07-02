@@ -72,7 +72,7 @@ public class Dbcp {
 			
 			conn 	= dataSource.getConnection();
 			
-			logger.debug( prefixion() + "get connection, " + dataSource.getActiveCount() + "/" + dataSource.getMaxActive() );
+//			logger.debug( prefixion() + "get connection, " + dataSource.getActiveCount() + "/" + dataSource.getMaxActive() );
 			
 		} catch (SQLException e) { 
 			logger.error( prefixion() + "get connection error!", e );
@@ -100,7 +100,7 @@ public class Dbcp {
 			if( st != null ) st.close();
 			if( rs != null ) rs.close();
 			
-			logger.debug( prefixion() + "close connection, " + dataSource.getActiveCount() + "/" + dataSource.getMaxActive() );
+//			logger.debug( prefixion() + "close connection, " + dataSource.getActiveCount() + "/" + dataSource.getMaxActive() );
 		
 		} catch (SQLException e) { 
 			logger.error( prefixion() + "close connection error!", e );
