@@ -1,5 +1,6 @@
 package x.javaplus.string;
 
+import java.text.MessageFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -34,6 +35,16 @@ public class StringUtil {
 		Pattern pattern = Pattern.compile("[0-9]*");
 		Matcher isNum = pattern.matcher(str);
 		return isNum.matches() ? str : "0";
+	}
+
+	/**
+	 * 创建一个与给定的模式和使用MessageFormat格式化给定的参数
+	 * @param pattern
+	 * @param arguments
+	 * @return
+	 */
+	public static String format( String pattern, Object... arguments ) {
+		return MessageFormat.format( pattern, arguments );
 	}
 
 	

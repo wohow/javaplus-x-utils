@@ -18,7 +18,7 @@ import x.javaplus.util.templet.Field;
 /**
  * 数据库 传输层对象
  * 
- * @author 林岑
+ * @author deng
  * 
  */
 public class Dto {

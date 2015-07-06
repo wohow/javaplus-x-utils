@@ -1,6 +1,7 @@
 package x.javaplus.collections;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -14,10 +15,10 @@ public class Lists {
 	}
 
 	public static <T> List<T> newArrayList( T... ls ) {
-		ArrayList<T> a = new ArrayList<T>();
-		for (T t : ls) {
-			a.add(t);
-		}
-		return a;
+//		ArrayList<T> a = new ArrayList<T>();
+//		for (T t : ls) {
+//			a.add(t);
+//		}
+		return Arrays.asList( ls );
 	}
 }
