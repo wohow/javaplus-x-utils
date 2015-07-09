@@ -477,6 +477,8 @@ public class Util {
 		 * @return
 		 */
 		public static boolean verify( String key, Object cpassword ){
+			if( key.length() <= 6 )
+				return false;
 			String rand_password 	= key.substring( key.length()-6, key.length());
 			String rawMd5			= key.substring( 0, key.length()-6 );
 			String nowMd5			= MD5.md5( rand_password + cpassword.toString() );
