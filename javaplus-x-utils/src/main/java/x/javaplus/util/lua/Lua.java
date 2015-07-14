@@ -88,8 +88,13 @@ public class Lua {
 			// 保存返回值, 到 ret 中
 			for( int i = 0; i < retlen; i++ ){
 				luaState.setField(LuaState.LUA_GLOBALSINDEX, "ret" + i );
-				ret[retlen-i-1] = new LuaValue( luaState.getLuaObject( "ret" + i ) );
+				try {
+					ret[retlen-i-1] = new LuaValue( luaState.getLuaObject( "ret" + i ) );
+				} catch (LuaException e) {
+					e.printStackTrace();
+				}
 			}
+			luaState.close();
 			return ret;
 		}
 		

@@ -1,5 +1,6 @@
 package x.javaplus.util.lua;
 
+import org.keplerproject.luajava.LuaException;
 import org.keplerproject.luajava.LuaObject;
 
 /**
@@ -9,15 +10,26 @@ import org.keplerproject.luajava.LuaObject;
  */
 public class LuaValue {
 
-	private LuaObject lo;
-
-	public LuaValue( LuaObject luaObject ) {
-		this.lo = luaObject;
+	private Number number 	= null;
+	private String string 	= null;
+	private Object object 	= null;
+	private boolean boo 	= false;
+	
+	public LuaValue( LuaObject lo ) throws LuaException {
+		if( lo.isBoolean() ){
+			boo = lo.getBoolean();
+		}else if( lo.isNumber() ){
+			number = lo.getNumber();
+		}else if( lo.isString() ){
+			string = lo.getString();
+		}else if( lo.isJavaObject() ){
+			object = lo.getObject();
+		}
 	}
 	
 	public boolean getBoolean(){
 		try {
-			return lo.getBoolean();
+			return boo;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
@@ -26,7 +38,7 @@ public class LuaValue {
 	
 	public int getInt(){
 		try {
-			return (int) lo.getNumber();
+			return number.intValue();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return 0;
@@ -35,7 +47,7 @@ public class LuaValue {
 	
 	public float getFloat(){
 		try {
-			return (float) lo.getNumber();
+			return number.floatValue();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return 0f;
@@ -44,7 +56,7 @@ public class LuaValue {
 	
 	public long getLong(){
 		try {
-			return (long) lo.getNumber();
+			return number.longValue();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return 0;
@@ -53,7 +65,7 @@ public class LuaValue {
 	
 	public short getShort(){
 		try {
-			return (short) lo.getNumber();
+			return number.shortValue();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return 0;
@@ -62,7 +74,7 @@ public class LuaValue {
 	
 	public byte getByte(){
 		try {
-			return (byte) lo.getNumber();
+			return number.byteValue();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return 0;
@@ -71,7 +83,7 @@ public class LuaValue {
 	
 	public String getString(){
 		try {
-			return lo.getString();
+			return string;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "";
@@ -80,7 +92,7 @@ public class LuaValue {
 
 	public Object getObject(){
 		try {
-			return lo.getObject();
+			return object;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
