@@ -2,7 +2,6 @@ package x.javaplus.util.lua;
 
 
 import org.keplerproject.luajava.LuaException;
-import org.keplerproject.luajava.LuaObject;
 import org.keplerproject.luajava.LuaState;
 import org.keplerproject.luajava.LuaStateFactory;
 
@@ -51,60 +50,52 @@ public class Lua {
 	}
 	
 	/**
-	 * 运行函数 (一个返回值)
-	 * @param function 函数名
-	 * @param args 参数
+	 * 获取函数 
+	 * @param funName
+	 * @return
 	 */
-	public LuaValue runFunction( String function, Object ... args ){
+	public Function getField( String funName ) {
 		
 		// 获取lua中的函数
-		luaState.getField( LuaState.LUA_GLOBALSINDEX, function );
+		luaState.getField( LuaState.LUA_GLOBALSINDEX, funName );
 		
-		// 参数压栈
-		int len = args.length;
-		try {
-			for( int i = 0; i < len; i++ )
-				luaState.pushObjectValue( args[i] );
-		} catch (LuaException e) { e.printStackTrace(); }
-	
-		// 调用!! 一共len个参数, 1 返回值
-		luaState.call( len, 1 );
-		
-		// 保存返回值, 到 ret 中
-		luaState.setField(LuaState.LUA_GLOBALSINDEX, "ret" );
-		LuaObject lo = luaState.getLuaObject( "ret" );
-		return new LuaValue( lo );
+		return new Function();
 	}
 	
-	/**
-	 * 运行函数 (多个返回值)
-	 * @param retlen 返回值个数
-	 * @param function 函数名
-	 * @param args 参数
-	 */
-	public LuaValue[] runFunction( int retlen, String function, Object ... args ){
+	public final class Function{
+		private Function(){};
+		/**
+		 * 运行函数 
+		 * @param retlen 返回值个数
+		 * @param args 参数
+		 * @return
+		 */
+		public LuaValue[] call( int retlen, Object ... args ){
+			
+			// 参数压栈
+			int len = args.length;
+			try {
+				for( int i = 0; i < len; i++ )
+					luaState.pushObjectValue( args[i] );
+			} catch (LuaException e) { e.printStackTrace(); }
 		
-		// 获取lua中的函数
-		luaState.getField( LuaState.LUA_GLOBALSINDEX, function );
-		
-		// 参数压栈
-		int len = args.length;
-		try {
-			for( int i = 0; i < len; i++ )
-				luaState.pushObjectValue( args[i] );
-		} catch (LuaException e) { e.printStackTrace(); }
-	
-		// 调用!! 一共len个参数, retlen 返回值
-		luaState.call( len, retlen );
-		
-		LuaValue[] ret = new LuaValue[retlen];
-		// 保存返回值, 到 ret 中
-		for( int i = 0; i < retlen; i++ ){
-			luaState.setField(LuaState.LUA_GLOBALSINDEX, "ret" + i );
-			ret[retlen-i-1] = new LuaValue( luaState.getLuaObject( "ret" + i ) );
+			// 调用!! 一共len个参数, retlen 返回值
+			luaState.call( len, retlen );
+			
+			if( retlen == 0 ) return null;
+			
+			LuaValue[] ret = new LuaValue[retlen];
+			// 保存返回值, 到 ret 中
+			for( int i = 0; i < retlen; i++ ){
+				luaState.setField(LuaState.LUA_GLOBALSINDEX, "ret" + i );
+				ret[retlen-i-1] = new LuaValue( luaState.getLuaObject( "ret" + i ) );
+			}
+			return ret;
 		}
-		return ret;
+		
 	}
-	
 	
 }
+
+
+
