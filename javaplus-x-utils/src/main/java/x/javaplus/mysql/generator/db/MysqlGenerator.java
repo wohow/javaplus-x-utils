@@ -8,11 +8,16 @@ import x.javaplus.mysql.generator.gen.Dto;
 import x.javaplus.util.templet.Config;
 import x.javaplus.util.templet.Field;
 
-public class Mysql {
+/**
+ * 数据库生成
+ * @author deng		
+ * @date 2015-7-14 上午9:17:32
+ */
+public class MysqlGenerator {
 
 	private DBObject dbo ;
 	
-	public Mysql( String args ) throws SQLException {
+	public MysqlGenerator( String args ) throws SQLException {
 		
 		dbo = DBObject.create();
 		

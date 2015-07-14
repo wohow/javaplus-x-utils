@@ -275,7 +275,7 @@ TempletName:CSV_LOADFUN_TO
 TempletName:CSV_LOADFUN
 	private static void loadCLASS_NAME( String file ){
 		
-		Csv csv = new Csv( SystemCfg.FILE_NAME + "/" + file );
+		Csv csv = new Csv( SystemCfg.FILE_NAME + "configs/" + file );
 		
 		for( Map<String, String> data : csv.getValues() ){
 			CLASS_NAME o = new CLASS_NAME(data);

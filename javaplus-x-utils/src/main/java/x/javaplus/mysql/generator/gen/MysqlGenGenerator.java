@@ -7,12 +7,12 @@ import x.javaplus.util.templet.Config;
 import x.javaplus.util.templet.Templet;
 
 
-public class MysqlGenerator {
+public class MysqlGenGenerator {
 
 	private static final String className = "MysqlGen";
 	
 	
-	public MysqlGenerator( String dtoPath, String dstPath, String packageName ) {
+	public MysqlGenGenerator( String dtoPath, String dstPath, String packageName ) {
 		
 		Templet temp = Config.getTemplet("MYSQL_GEN");
 		

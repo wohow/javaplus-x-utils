@@ -1,13 +1,15 @@
 package x.javaplus.util.templet;
 
 import x.javaplus.string.StringUtil;
-import japa.parser.ast.body.BodyDeclaration;
+import japa.parser.ast.Comment;
+import japa.parser.ast.body.MethodDeclaration;
 
 public class Field {
 
 	private String type;
 	private String typeName;
 
+	// 分解的名字
 	private String name;
 	private String funName;
 	
@@ -22,18 +24,18 @@ public class Field {
 	 * 
 	 * @param body
 	 */
-	public Field( BodyDeclaration body ) {
-		String temp = body.toString().trim();
-		try {
-			comment = temp.substring( temp.indexOf("/*")+2, temp.indexOf("*/" ) ).replaceAll( "\\*|/", "" ).trim();
-			temp	= temp.substring( temp.indexOf("*/")+2, temp.indexOf(";" )+1 ).trim();
-		} catch (Exception e) {
-			comment	= "无";
-		}
-		name		= temp.substring( temp.indexOf( " " )+1, temp.indexOf( ";" ) );
-		type		= temp.substring( 0, temp.indexOf( " " ) );
-		type		= changeToFunname( type );
+	public Field( MethodDeclaration body ) {
 		
+		//
+		name		= body.getName();
+		type		= body.getType().toString();
+		if( type.equals("void") )
+			throw new RuntimeException( "数据类型不能为 void at name=" + name );
+		Comment x 	= body.getComment();
+		comment		= x == null ? "无" : x.getContent();
+		
+		////
+		type		= changeToFunname( type );
 		funName		= StringUtil.firstToUpper(name);
 		
 		typeName	= StringUtil.firstToUpper(type);

@@ -3,8 +3,8 @@ package x.javaplus.mysql;
 
 import java.sql.SQLException;
 
-import x.javaplus.mysql.generator.db.Mysql;
-import x.javaplus.mysql.generator.gen.MysqlGenerator;
+import x.javaplus.mysql.generator.db.MysqlGenerator;
+import x.javaplus.mysql.generator.gen.MysqlGenGenerator;
 import x.javaplus.util.Util.Check;
 
 public class App {
@@ -30,17 +30,17 @@ public class App {
 		
 		Check.isNull( dtoPath, dstPath, packageName );
 
-		new MysqlGenerator( dtoPath, dstPath, packageName );
+		new MysqlGenGenerator( dtoPath, dstPath, packageName );
 	}
 
 	/**
-	 * 生成mysql数据库
+	 * 生成mysql数据库ssss
 	 * @param args
 	 */
 	public static void generateMysql( String args ) {
 		
 		try {
-			new Mysql( args );
+			new MysqlGenerator( args );
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

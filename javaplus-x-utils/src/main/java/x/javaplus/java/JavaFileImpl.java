@@ -66,8 +66,10 @@ public class JavaFileImpl implements JavaFile {
 		TypeDeclaration t 	= getType();
 		List<BodyDeclaration> all = t.getMembers();
 		for (BodyDeclaration b : all) {
-			if( !(b instanceof MethodDeclaration) )
-				ls.add( new Field(b) );
+			if( b instanceof MethodDeclaration ){
+				MethodDeclaration meth = (MethodDeclaration) b;
+				ls.add( new Field(meth) );
+			}
 		}
 		return ls;
 	}
