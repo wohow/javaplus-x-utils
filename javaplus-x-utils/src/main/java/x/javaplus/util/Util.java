@@ -10,8 +10,10 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.URL;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 import java.util.zip.CRC32;
@@ -551,6 +553,23 @@ public class Util {
 		/** 到凌晨还剩余多少时间 */
 		public static long toWeehoursTime() {
 			return refTimeInMillis( 24, 0, 0 ) - System.currentTimeMillis();
+		}
+		
+		/**
+		 * 根据 HH:mm:ss字符串时间 返回毫秒数
+		 * @param string
+		 * @return
+		 */
+		public static long wrapTime( String string ) {
+			try {
+				final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				String year = refFormatDate( "yyyy-MM-dd" );
+				Date date = sdf.parse( year + " " + string );
+				return date.getTime();
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			return 0;
 		}
 		
 	}
