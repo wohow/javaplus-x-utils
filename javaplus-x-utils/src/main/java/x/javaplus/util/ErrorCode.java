@@ -26,6 +26,8 @@ public enum ErrorCode {
 	HAVE_ILLEGALITY( 11003, "名字含有非法字" ),
 	/** 11004 - 名字已存在 */
 	NAME_REPEAT( 11004, "名字已存在" ),
+	/** 11101 - 货币不足*/
+	CURRENCY_LAZYWEIGHT( 11101, "货币不足" ),
 	
 	/** 12001 - 星球不存在 */
 	PLANET_NOTEXIST( 12001, "星球不存在" ),
@@ -33,10 +35,15 @@ public enum ErrorCode {
 	STUFF_NOTEXIST( 12101, "材料不存在" ),
 	/** 12102 - 材料数量不足 */
 	STUFF_LAZYWEIGHT( 12102, "材料数量不足" ),
+	/** 12103 - 道具不存在 */
+	PROP_NOTEXIST( 12103, "道具不存在" ),
+	/** 12104 - 道具数量不足 */
+	PROP_LAZYWEIGHT( 12104, "道具数量不足" ),
 	/** 12201 - 不可捐献 */
 	CANNOT_DONATE( 12201, "不可捐献" ),
 	/** 12301 - 位置被占用 */
 	INDEX_OCCUPY( 12301, "位置被占用" ),
+	
 	/** 12401 - 没有权限操作 */
 	NOT_PRIVILEGE( 12401, "没有权限操作" ),
 	/** 12402 - 该投票不存在 */
@@ -49,6 +56,7 @@ public enum ErrorCode {
 	CON_DISSATISFY( 12405, "条件不满足" ),
 	/** 12406 - 申请的更新不正确 */
 	UPDATE_ERROR( 12406, "申请的更新不正确" ),
+
 	
 	/////-----------------------------------
 	/** 2001 - 游戏服务器 正在运行 */
