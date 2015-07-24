@@ -117,7 +117,8 @@ public class Dbcp {
 		try {
 			DBObject o = DBObject.create();
 			
-			for( String name : getAllTableName( database, args ) ){
+			List<String> allTableName = getAllTableName( database, args );
+			for( String name : allTableName ){
 			
 				o.prepareStatement( "TRUNCATE TABLE " + name );
 			
@@ -127,6 +128,30 @@ public class Dbcp {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * 删除所有表
+	 * @param database 数据库
+	 * @param args 忽略的表名
+	 */
+	public static void drop( String database, String ... args ){
+		
+		try {
+			DBObject o = DBObject.create();
+			
+			List<String> allTableName = getAllTableName( database, args );
+			for( String name : allTableName ){
+			
+				o.prepareStatement( "DROP TABLE " + name );
+			
+				o.executeUpdate();
+			}
+			o.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	private static List<String> getAllTableName( String database, String[] args ) {
