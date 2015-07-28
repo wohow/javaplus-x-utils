@@ -39,8 +39,14 @@ public enum ErrorCode {
 	PROP_NOTEXIST( 12103, "道具不存在" ),
 	/** 12104 - 道具数量不足 */
 	PROP_LAZYWEIGHT( 12104, "道具数量不足" ),
+	
 	/** 12111 - 舰船不存在 */
 	SHIP_NOTEXIST( 12111, "舰船不存在" ),
+	/** 12112 - 不是舰船装备 */
+	NOT_SHIPEQUIP( 12112, "不是舰船装备" ),
+	/** 12113 - 不是舰长装备 */
+	NOT_CAPTAINEQUIP( 12113, "不是舰长装备" ),
+	
 	/** 12121 - 空间不足 */
 	ROOM_LAZYWEIGHT( 12121, "空间不足" ),
 	/** 12201 - 不可捐献 */
