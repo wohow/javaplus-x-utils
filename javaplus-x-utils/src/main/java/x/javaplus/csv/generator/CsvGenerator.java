@@ -33,18 +33,18 @@ public class CsvGenerator {
 		
 		for( Csv csv : csvs ){
 			
-			String className 	= csv.getFileName().substring( 0, csv.getFileName().length() - 4 );
-			className			= StringUtil.firstToUpper(className);
+			String className1 	= csv.getFileName().substring( 0, csv.getFileName().length() - 4 );
+			className1			= StringUtil.firstToUpper(className1) + "Po";
 			
-			generatorImport( importString , oPackageName + "." + className );
+			generatorImport( importString , oPackageName + "." + className1 );
 			
-			generatorPfinal( pfinalString , className );
+			generatorPfinal( pfinalString , className1 );
 			
-			generatorLfun( lfunString , className, csv.getFileName() );
+			generatorLfun( lfunString , className1, csv.getFileName() );
 			
-			generatorFun( funString , className );
+			generatorFun( funString , className1 );
 
-			generatorGet( getString , className, csv );
+			generatorGet( getString , className1, csv );
 		}
 		
 		temp.append( "IMPORT", importString.toString() );

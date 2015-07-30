@@ -252,7 +252,7 @@ import java.util.Map;
 import x.javaplus.collections.Lists;
 import x.javaplus.csv.util.Csv;
 
-import cn.xgame.a.system.SystemCfg;
+import cn.xgame.system.SystemCfg;
 APPEND IMPORT
 public class CLASS_NAME {
 APPEND PRIVATE_FINAL

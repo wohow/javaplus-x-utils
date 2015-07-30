@@ -18,7 +18,7 @@ public class ObjectGenerator {
 		for( Csv csv : csvs ){
 			
 			String className 	= csv.getFileName().substring( 0, csv.getFileName().length() - 4 );
-			className			= StringUtil.firstToUpper(className);
+			className			= StringUtil.firstToUpper(className) + "Po";
 			
 			Templet temp 		= Config.getTemplet( "CSV_OBJECT" );
 			temp.set( "PACKAGE_NAME", oPackageName );
