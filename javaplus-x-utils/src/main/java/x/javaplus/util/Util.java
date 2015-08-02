@@ -243,6 +243,9 @@ public class Util {
 			write(file, content.toString());
 		}
 		
+		public static void write() throws FileNotFoundException{
+		}
+		
 		/**
 		 * 获得某个文件夹下, 所有的文件
 		 * 
