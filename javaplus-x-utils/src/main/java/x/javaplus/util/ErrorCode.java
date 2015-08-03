@@ -60,9 +60,11 @@ public enum ErrorCode {
 	HAVEBEENIN_TEAM( 12119, "该玩家已经在队伍中了" ),
 	/** 12120 - 该舰船不能战斗 */
 	SHIP_NOTFIGHTING( 12120, "该舰船不能战斗" ),
-	
 	/** 12121 - 空间不足 */
 	ROOM_LAZYWEIGHT( 12121, "空间不足" ),
+	/** 12122 - 舰长不存在 */
+	CAPTAIN_NOTEXIST( 12122, "舰长不存在" ),
+	
 	/** 12201 - 不可捐献 */
 	CANNOT_DONATE( 12201, "不可捐献" ),
 	/** 12301 - 位置被占用 */
