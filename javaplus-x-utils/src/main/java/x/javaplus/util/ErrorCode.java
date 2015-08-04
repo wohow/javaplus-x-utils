@@ -64,6 +64,8 @@ public enum ErrorCode {
 	ROOM_LAZYWEIGHT( 12121, "空间不足" ),
 	/** 12122 - 舰长不存在 */
 	CAPTAIN_NOTEXIST( 12122, "舰长不存在" ),
+	/** 12123 - 不在同一个星球上 */
+	NOT_ATSAMESTAR( 12123, "不在同一个星球上" ),
 	
 	/** 12201 - 不可捐献 */
 	CANNOT_DONATE( 12201, "不可捐献" ),
