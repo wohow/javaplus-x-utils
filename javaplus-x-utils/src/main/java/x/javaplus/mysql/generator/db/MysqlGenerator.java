@@ -33,7 +33,7 @@ public class MysqlGenerator {
 		List<Dto> dtos = Config.getDtos( args );
 		for( Dto d : dtos ){
 			
-			String table 	= d.getSimpleClassName();
+			String table 	= d.getSimpleClassName().toLowerCase();
 			
 			if( tableIsExists( table ) ){
 				createColumns( getDBTableName(table), d.getVariablesAllClone() );
