@@ -64,7 +64,7 @@ public class CLASS_NAME {
 		public static int getMaxId( String tableName, String col, String criteria ) {
 			DBObject db = DBObject.create();
 			try {
-				db.prepareStatement( "select max(" + col + ") from " + tableName + " where " + criteria );
+				db.prepareStatement( "select max(" + col + ") from DATABASE_NAME" + tableName + " where " + criteria );
 				db.executeQuery();
 				if ( db.next())
 					return db.getInt( 1 );
@@ -84,7 +84,7 @@ public class CLASS_NAME {
 		public static long getCount( String tableName ) {
 			DBObject db = DBObject.create();
 			try {
-				db.prepareStatement( "select COUNT(*) from " + tableName );
+				db.prepareStatement( "select COUNT(*) from DATABASE_NAME" + tableName );
 				db.executeQuery();
 				if ( db.next() )
 					return db.getLong( 1 );

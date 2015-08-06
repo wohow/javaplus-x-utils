@@ -29,6 +29,7 @@ public class MysqlGenGenerator {
 		
 		temp.set("PACKAGE_NAME", packageName);
 		temp.set("CLASS_NAME", className);
+		temp.set("DATABASE_NAME", "`"+database+"`." );
 
 		List<Dto> dtos = Config.getDtos(dtoPath);
 		temp.append( "GET_DAO", generateGetDao( dtos ) );
