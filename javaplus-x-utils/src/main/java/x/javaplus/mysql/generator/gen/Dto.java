@@ -46,6 +46,19 @@ public class Dto {
 	public List<Field> getVariablesAll() {
 		return file.getMethods();
 	}
+	/**
+	 * 克隆一份变量
+	 * @return
+	 */
+	public List<Field> getVariablesAllClone() {
+		if( file.getMethods() == null )
+			return null;
+		List<Field> ret = Lists.newArrayList();
+		for( Field field : file.getMethods() ){
+			ret.add( new Field( field ) );
+		}
+		return ret;
+	}
 	
 	public List<Field> getAnnotations(String annotationName) {
 		List<AnnotationExpr> as = file.getType().getAnnotations();
@@ -80,7 +93,10 @@ public class Dto {
 		return getSimpleClassName() + DTO_TAIL;
 	}
 
-
+	/**
+	 * 获取类名
+	 * @return
+	 */
 	public String getSimpleClassName() {
 		return file.getClassSimpleName();
 	}

@@ -20,6 +20,14 @@ public class Field {
 		this.type = value;
 	}
 
+	public Field( Field field ) {
+		this.type 		= field.type;
+		this.typeName 	= field.typeName;
+		this.name 		= field.name;
+		this.funName 	= field.funName;
+		this.comment 	= field.comment;
+	}
+	
 	/**
 	 * 
 	 * @param body
@@ -43,7 +51,6 @@ public class Field {
 		
 		type		= changeToCalss( type );
 	}
-
 
 	public String getType() {
 		return type;
@@ -95,7 +102,7 @@ public class Field {
 	}
 
 	public String sql() {
-		return name+" "+sqlType()+" NULL COMMENT '"+getComment()+"'" + (name.equalsIgnoreCase("id") ? " PRIMARY KEY" : "");
+		return name+" "+sqlType()+" NULL COMMENT '"+getComment().trim()+"'" + (name.equalsIgnoreCase("id") ? " PRIMARY KEY" : "");
 	}
 
 	public String sqlType() {

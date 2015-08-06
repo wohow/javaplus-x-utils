@@ -13,7 +13,7 @@ public class App {
 	 * 生成mysql主类1
 	 * @param args
 	 */
-	public static void generateMysqlGen( String[] args ) {
+	public static void generateMysqlGen( String database, String[] args ) {
 		
 		String dtoPath = null;
 		String dstPath = null;
@@ -28,19 +28,20 @@ public class App {
 				packageName = args[i+1];
 		}
 		
-		Check.isNull( dtoPath, dstPath, packageName );
+		Check.isNull( database, dtoPath, dstPath, packageName );
 
-		new MysqlGenGenerator( dtoPath, dstPath, packageName );
+		new MysqlGenGenerator( database, dtoPath, dstPath, packageName );
 	}
 
 	/**
 	 * 生成mysql数据库ssss
-	 * @param args
+	 * @param database 数据库名字
+	 * @param path 表路径
 	 */
-	public static void generateMysql( String args ) {
+	public static void generateMysql( String database, String path ) {
 		
 		try {
-			new MysqlGenerator( args );
+			new MysqlGenerator( database, path );
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

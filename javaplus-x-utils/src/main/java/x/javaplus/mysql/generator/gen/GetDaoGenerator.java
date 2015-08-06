@@ -10,7 +10,7 @@ public class GetDaoGenerator {
 
 	private StringPrinter ret;
 	
-	public GetDaoGenerator( List<Dto> dtos ) {
+	public GetDaoGenerator( String database, List<Dto> dtos ) {
 	
 		ret	= new StringPrinter();
 		Templet temp = Config.getTemplet("GET_DAO");
@@ -18,7 +18,7 @@ public class GetDaoGenerator {
 		for( Dto dto : dtos ){
 			String className = dto.getSimpleClassName();
 			temp.set( "CLASS_NAME", className );
-			temp.set( "DB_NAME", className.toLowerCase() );
+			temp.set( "DB_NAME", "`"+database+"`."+className.toLowerCase() );
 //			ret.println( temp.toString() );
 			ret.println( temp.toString().replaceAll("\r{2,50}", "\r") );
 			temp.clear();

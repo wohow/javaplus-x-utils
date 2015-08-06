@@ -120,7 +120,7 @@ public class Dbcp {
 			List<String> allTableName = getAllTableName( database, args );
 			for( String name : allTableName ){
 			
-				o.prepareStatement( "TRUNCATE TABLE " + name );
+				o.prepareStatement( "TRUNCATE TABLE `" +database+"`."+name );
 			
 				o.executeUpdate();
 			}
@@ -143,7 +143,7 @@ public class Dbcp {
 			List<String> allTableName = getAllTableName( database, args );
 			for( String name : allTableName ){
 			
-				o.prepareStatement( "DROP TABLE " + name );
+				o.prepareStatement( "DROP TABLE `" +database+"`."+ name );
 			
 				o.executeUpdate();
 			}
