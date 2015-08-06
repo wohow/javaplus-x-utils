@@ -4,6 +4,8 @@ package PACKAGE_NAME;
 import java.sql.SQLException;
 import java.util.List;
 
+import cn.xgame.system.SystemCfg;
+
 import x.javaplus.collections.Lists;
 import x.javaplus.mysql.db.DBObject;
 import x.javaplus.mysql.db.SqlDao;
@@ -64,7 +66,7 @@ public class CLASS_NAME {
 		public static int getMaxId( String tableName, String col, String criteria ) {
 			DBObject db = DBObject.create();
 			try {
-				db.prepareStatement( "select max(" + col + ") from DATABASE_NAME" + tableName + " where " + criteria );
+				db.prepareStatement( "select max(" + col + ") from `" + SystemCfg.getDatabaseName()+"`." + tableName + " where " + criteria );
 				db.executeQuery();
 				if ( db.next())
 					return db.getInt( 1 );
@@ -84,7 +86,7 @@ public class CLASS_NAME {
 		public static long getCount( String tableName ) {
 			DBObject db = DBObject.create();
 			try {
-				db.prepareStatement( "select COUNT(*) from DATABASE_NAME" + tableName );
+				db.prepareStatement( "select COUNT(*) from `" + SystemCfg.getDatabaseName()+"`." + tableName );
 				db.executeQuery();
 				if ( db.next() )
 					return db.getLong( 1 );
@@ -205,7 +207,7 @@ APPEND SETOBJECT
 ------------------------------------------------------------
 TempletName:GET_DAO
 		public static CLASS_NAMEDao getCLASS_NAMEDao() {
-			return new CLASS_NAMEDao( "DB_NAME" );
+			return new CLASS_NAMEDao( "`"+SystemCfg.getDatabaseName()+"`.DB_NAME" );
 		}
 ------------------------------------------------------------
 TempletName:FIELDS_PRIVATE

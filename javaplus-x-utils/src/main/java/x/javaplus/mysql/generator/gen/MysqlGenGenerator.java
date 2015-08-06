@@ -10,7 +10,6 @@ import x.javaplus.util.templet.Templet;
 public class MysqlGenGenerator {
 
 	private static final String className = "MysqlGen";
-	private final String database;
 	
 	/**
 	 * MysqlGen生成器
@@ -19,17 +18,12 @@ public class MysqlGenGenerator {
 	 * @param dstPath
 	 * @param packageName
 	 */
-	public MysqlGenGenerator( String database, String dtoPath, String dstPath, String packageName ) {
+	public MysqlGenGenerator( String dtoPath, String dstPath, String packageName ) {
 		
-		if( database == null || database.isEmpty() )
-			throw new RuntimeException( "数据库名字错误" );
-		
-		this.database 	= database;
 		Templet temp 	= Config.getTemplet("MYSQL_GEN");
 		
 		temp.set("PACKAGE_NAME", packageName);
 		temp.set("CLASS_NAME", className);
-		temp.set("DATABASE_NAME", "`"+database+"`." );
 
 		List<Dto> dtos = Config.getDtos(dtoPath);
 		temp.append( "GET_DAO", generateGetDao( dtos ) );
@@ -45,7 +39,7 @@ public class MysqlGenGenerator {
 
 	// getDao函数生成器
 	private String generateGetDao( List<Dto> dtos) {
-		return new GetDaoGenerator( database, dtos ).toString();
+		return new GetDaoGenerator( dtos ).toString();
 	}
 
 	// XXXDto.java 生成器
