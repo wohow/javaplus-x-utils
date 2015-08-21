@@ -6,6 +6,10 @@ import java.sql.SQLException;
 
 import com.alibaba.druid.pool.DruidPooledConnection;
 
+/**
+ * DB连接对象
+ * @author deng		
+ */
 public class DBObject {
 	
 	private DruidPooledConnection con;
