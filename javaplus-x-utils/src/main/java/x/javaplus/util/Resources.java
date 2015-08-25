@@ -12,6 +12,11 @@ public class Resources {
 	    return url;
 	  }
 	  
+	  /**
+	   * 主要是包含resources的路径
+	   * @param resourceName
+	   * @return
+	   */
 	  public static String getResource( String resourceName ){
 		  return "resources/" + resourceName;
 	  }
