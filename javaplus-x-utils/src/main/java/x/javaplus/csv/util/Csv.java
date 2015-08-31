@@ -84,7 +84,7 @@ public class Csv {
 			
 			for( Head head : heads.values() ){
 				try {
-					data.put( head.name, col[head.i] );
+					data.put( head.name, col[head.i].trim() );
 				} catch (Exception e) {
 					data.put( head.name, "" );
 				}
