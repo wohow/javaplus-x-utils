@@ -441,7 +441,8 @@ public class Util {
 		
 		private static final java.util.Random random = new java.util.Random();
 		
-		/** min和max都必须大于0    <br> 
+		/** 
+		 * min和max都必须大于0    <br> 
 		 * 在min和max中随机一个数字，包括上下限[min,max] 
 		 * */
 		public static int get( int min, int max ) {
@@ -511,17 +512,39 @@ public class Util {
 		public static float endTimer(){ return (System.nanoTime() - l1) / 1000000f; }
 		public static void endTimerToPrint(){ System.out.println( " 逻辑耗时：" + ((System.nanoTime() - l1) / 1000000f) + "毫秒"  ); }
 		
-
+		/**
+		 * 将时间转成字符串  把一个用秒数保存的时间值转换为易读的字符串
+		 * @param millis
+		 * @return
+		 */
+		public static String refFormatDate( long millis ){ 
+			return new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss" ).format( millis );  
+		}
+		public static String refFormatDate( ){ 
+			return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format( System.currentTimeMillis() ); 
+		}
+		/**
+		 * 将时间转成字符串  把一个用秒数保存的时间值转换为易读的字符串<br>
+		 * 可以方便地修改日期格式
+		 * @param millis
+		 * @param pattern
+		 * @return
+		 */
+		public static String refFormatDate( long millis, String pattern ){ 
+			return new SimpleDateFormat( pattern ).format( millis ); 
+		}
 		
-		/** =============================将时间转成字符串  把一个用秒数保存的时间值转换为易读的字符串 =============================== */
-		public static String refFormatDate( long millis ){ return new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss" ).format( millis );  }
-		public static String refFormatDate( ){ return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format( System.currentTimeMillis() ); }
-		public static String refFormatDate( long millis, String pattern ){ return new SimpleDateFormat( pattern ).format( millis ); }//可以方便地修改日期格式
-		public static String refFormatDate( String pattern ){ return new SimpleDateFormat( pattern ).format( System.currentTimeMillis() ); }
+		public static String refFormatDate( String pattern ){ 
+			return new SimpleDateFormat( pattern ).format( System.currentTimeMillis() ); 
+		}
 		
-		
-		
-		/** ===================计算从当前时间，满足条件 hourOfDay, minuteOfHour, secondOfMinite的最近时间 =========================*/
+		/**
+		 * 计算从当前时间，满足条件 hourOfDay, minuteOfHour, secondOfMinite的最近时间
+		 * @param hourOfDay
+		 * @param minuteOfHour
+		 * @param secondOfMinite
+		 * @return
+		 */
 		public static long refTimeInMillis( int hourOfDay, int minuteOfHour, int secondOfMinite ){
 			Calendar calendar = Calendar.getInstance();
 			if( hourOfDay != -1 ) calendar.set( Calendar.HOUR_OF_DAY, hourOfDay );
@@ -530,6 +553,15 @@ public class Util {
 			calendar.set( Calendar.MILLISECOND, 0 );
 			return calendar.getTimeInMillis();
 		}
+		
+		/**
+		 * 计算从currentTime时间，满足条件 hourOfDay, minuteOfHour, secondOfMinite的最近时间
+		 * @param currentTime
+		 * @param hourOfDay
+		 * @param minuteOfHour
+		 * @param secondOfMinite
+		 * @return
+		 */
 		public static long refTimeInMillis( long currentTime, int hourOfDay, int minuteOfHour, int secondOfMinite ) {
 			Calendar calendar = Calendar.getInstance();
 			calendar.setTimeInMillis( currentTime );
@@ -540,14 +572,21 @@ public class Util {
 			return calendar.getTimeInMillis();
 		}
 		
-		
-		
-		/**=============================================== 获得当前星期 ==========================================================*/
+		/**
+		 * 根据时间段获取星期 
+		 * @param currentTimeMillis
+		 * @return
+		 */
 		public static byte currentWeek( long currentTimeMillis ){
 			Calendar cal = Calendar.getInstance();
 			cal.setTimeInMillis( currentTimeMillis );
 			return (byte) ( cal.get(Calendar.DAY_OF_WEEK) == 1 ? 7 : (cal.get(Calendar.DAY_OF_WEEK) - 1) );
 		}
+		
+		/**
+		 * 获取当前星期
+		 * @return
+		 */
 		public static byte currentWeek(){
 			Calendar cal = Calendar.getInstance();
 			return (byte) ( cal.get(Calendar.DAY_OF_WEEK) == 1 ? 7 : (cal.get(Calendar.DAY_OF_WEEK) - 1) );
