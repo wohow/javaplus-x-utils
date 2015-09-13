@@ -66,6 +66,10 @@ public enum ErrorCode {
 	CAPTAIN_NOTEXIST( 12122, "舰长不存在" ),
 	/** 12123 - 不在同一个星球上 */
 	NOT_ATSAMESTAR( 12123, "不在同一个星球上" ),
+	/** 12124 - 能量不足 */
+	ENERGY_LAZYWEIGHT( 12124, "能量不足" ),
+	/** 12125 - 舰长操控不足 */
+	CAPT_CONTROL_LAZYWEIGHT( 12125, "舰长操控不足" ),
 	
 	/** 12201 - 不可捐献 */
 	CANNOT_DONATE( 12201, "不可捐献" ),
