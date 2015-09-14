@@ -510,6 +510,7 @@ public class Util {
 		private volatile static long l1;
 		public static void beginTimer(){ l1 = System.nanoTime(); }
 		public static float endTimer(){ return (System.nanoTime() - l1) / 1000000f; }
+		public static int toEndTime(){ return (int) ((System.nanoTime() - l1) / 1000000); }
 		public static void endTimerToPrint(){ System.out.println( " 逻辑耗时：" + ((System.nanoTime() - l1) / 1000000f) + "毫秒"  ); }
 		
 		/**

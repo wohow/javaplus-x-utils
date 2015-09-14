@@ -101,8 +101,8 @@ public enum ErrorCode {
 	ECTYPE_NOTEXIST( 12501, "副本不存在" ),
 	/** 12502 - 该船不能战斗 */
 	SHIP_CANNOT_FIGHT( 12502, "该船不能战斗" ),
-	/** 12503 - 该船不在目标星球 */
-	SHIP_NOTINSTAR( 12503, "该船不在目标星球" ),
+	/** 12503 - 需要航行 */
+	SHIP_NOTINSTAR( 12503, "需要航行" ),
 	/** 12504 - 等待其他玩家 */
 	AWAIT_OTHERPLAYER( 12504, "等待其他玩家" ),
 	/** 12505 - 战斗时间还没结束 */
