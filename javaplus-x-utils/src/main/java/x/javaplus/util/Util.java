@@ -504,7 +504,24 @@ public class Util {
 		
 	}
 	
+	/**
+	 * 时间工具
+	 * @author deng		
+	 * @date 2015-9-18 下午2:53:03
+	 */
 	public static final class Time{
+		
+		/**
+		 * 一天的毫秒数 24 * 60 * 60 * 1000 = 86400000
+		 */
+		public static final long DAY_OF_MS = 86400000l;
+		
+		/**
+		 * 一小时的毫秒数 1 * 60 * 60 * 1000 = 3600000
+		 */
+		public static final long HOUR_OF_MS	= 3600000l;
+		
+		
 		
 		/**====================================== 计时工具 ======================================*/
 		private volatile static long l1;
