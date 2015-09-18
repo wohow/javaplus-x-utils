@@ -238,7 +238,7 @@ TempletName:FROM_DBOBJECT
 			VARIATE_NAME = o.getTYPE_NAME( "VARIATE_NAME" );
 ------------------------------------------------------------
 TempletName:CHANGE_SQL
-		public static String VARIATE_NAMEChangeSql( VARIATE_TYPE x) {
+		public static String VARIATE_NAMEChangeSql( VARIATE_TYPE x ) {
 			return "VARIATE_NAME=" + VALUE;
 		}
 ------------------------------------------------------------
