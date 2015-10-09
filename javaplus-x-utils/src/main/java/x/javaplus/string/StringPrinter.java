@@ -15,8 +15,8 @@ public class StringPrinter {
 	public StringPrinter() {
 	}
 
-	public void print(Object obj) {
-		out.print(obj);
+	public void print(Object x) {
+		out.print(x);
 	}
 
 	public void println(Object x) {

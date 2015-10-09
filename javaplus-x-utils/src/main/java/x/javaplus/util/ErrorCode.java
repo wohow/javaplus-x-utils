@@ -107,6 +107,8 @@ public enum ErrorCode {
 	AWAIT_OTHERPLAYER( 12504, "等待其他玩家" ),
 	/** 12505 - 战斗时间还没结束 */
 	COMBATTIME_NOTOVER( 12505, "战斗时间还没结束" ),
+	/** 12506 - 舰队繁忙 */
+	FLEET_BUSY( 12506, "舰队繁忙" ),
 	
 	/** 12601 - 领地等级过低 */
 	MANOR_LEVEL_TOOLOW( 12601, "领地等级过低" ),
