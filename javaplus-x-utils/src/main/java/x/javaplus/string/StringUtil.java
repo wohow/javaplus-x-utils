@@ -15,7 +15,6 @@ public class StringUtil {
 
 	/**
 	 * 把第一位字符转成大写
-	 * 
 	 * @param str
 	 * @return
 	 */
@@ -32,7 +31,7 @@ public class StringUtil {
 	 */
 	public static String convertNumberString(String str) {
 		if( str == null || str.isEmpty() ) return "0";
-		Pattern pattern = Pattern.compile("[0-9]*");
+		Pattern pattern = Pattern.compile("^(\\-|\\+)?\\d+(\\.\\d+)?$");
 		Matcher isNum = pattern.matcher(str);
 		return isNum.matches() ? str : "0";
 	}
