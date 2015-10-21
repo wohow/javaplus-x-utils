@@ -112,6 +112,8 @@ public enum ErrorCode {
 	
 	/** 12601 - 领地等级过低 */
 	MANOR_LEVEL_TOOLOW( 12601, "领地等级过低" ),
+	/** 12602 - 领地操作时间还没完 */
+	MANOR_TIME_ISYET( 12602, "领地操作时间还没完" ),
 	
 	/** 12701 - 邮件不存在 */
 	MAIL_NOTEXIST( 12701, "邮件不存在" ),
