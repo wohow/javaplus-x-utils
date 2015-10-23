@@ -27,10 +27,10 @@ public class SqlDao {
 	}
 	
 	//---select
-	protected void select( String arg, boolean isUpdate ) {
+	protected void select( String id, boolean isUpdate ) {
 		type = SELECT;
 		try {
-			String sql = "SELECT * FROM " + tableName + " WHERE id=" + arg;
+			String sql = "SELECT * FROM " + tableName + " WHERE id=" + id;
 			o.prepareStatement( sql);
 			o.executeQuery();
 			if( isUpdate )
@@ -86,10 +86,10 @@ public class SqlDao {
 	}
 	
 	//---delete
-	public void delete( String id ){
+	protected void delete( String id ){
 		type = DELETE;
 		try {
-			String sql = "DELETE FROM " + tableName + " WHERE id='" + id + "'";
+			String sql = "DELETE FROM " + tableName + " WHERE id=" + id;
 			o.prepareStatement( sql);
 			o.executeUpdate();
 		} catch (SQLException e) { }

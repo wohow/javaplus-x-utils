@@ -188,8 +188,8 @@ TempletName:DAO
 			return new CLASS_NAMEDto();
 		}
 		
-		public void delete( String id ){
-			super.delete( id );
+		public void delete( VARID_TYPE id ){
+			super.delete( VARID_NAME );
 		}
 		public void deleteByExact( String arg ){
 			super.deleteByExact( arg );

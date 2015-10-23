@@ -52,8 +52,8 @@ public enum ErrorCode {
 	SHIP_NOTLEISURE( 12115, "舰船不是空闲状态" ),
 	/** 12116 - 队伍已经满了 */
 	TEAM_ISMAX( 12116, "队伍已经满了" ),
-	/** 12117 - 拒绝组队 */
-	REJECTPARTY( 12117, "拒绝组队" ),
+	/** 12117 - 拒绝 */
+	REJECTPARTY( 12117, "拒绝" ),
 	/** 12118 - 组队超时 */
 	TEAM_TIMEOUT( 12118, "组队超时" ),
 	/** 12119 - 该玩家已经在队伍中了 */
@@ -70,6 +70,7 @@ public enum ErrorCode {
 	ENERGY_LAZYWEIGHT( 12124, "能量不足" ),
 	/** 12125 - 舰长操控不足 */
 	CAPT_CONTROL_LAZYWEIGHT( 12125, "舰长操控不足" ),
+	/** 12125 - 舰长操控不足 */
 	
 	/** 12201 - 不可捐献 */
 	CANNOT_DONATE( 12201, "不可捐献" ),
@@ -96,6 +97,8 @@ public enum ErrorCode {
 	AXN_NOEXIST( 12409, "频道不存在" ),
 	/** 12410 - 频道人数已经满了 */
 	AXN_MAXMEMBER( 12410, "频道人数已经满了" ),
+	/** 12411 - 已经在频道中 */
+	AXN_HAVEIN( 12411, "已经在频道中" ),
 	
 	/** 12501 - 副本不存在 */
 	ECTYPE_NOTEXIST( 12501, "副本不存在" ),
