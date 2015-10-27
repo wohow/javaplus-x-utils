@@ -1,5 +1,6 @@
 package x.javaplus.string;
 
+import java.io.UnsupportedEncodingException;
 import java.text.MessageFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -46,5 +47,30 @@ public class StringUtil {
 		return MessageFormat.format( pattern, arguments );
 	}
 
+	/**
+	 * 将bytes包装成字符串
+	 * @param bytes
+	 * @return
+	 */
+	public static String wrapBytes(byte[] bytes) {
+		try {
+			return new String(bytes,"utf-8");
+		} catch (UnsupportedEncodingException e) {
+			return "";
+		}
+	}
+
+	/**
+	 * 将字符串返回bytes
+	 * @param str
+	 * @return
+	 */
+	public static byte[] toBytes( String str ) {
+		try {
+			return str.getBytes( "utf-8" );
+		} catch (UnsupportedEncodingException e) {
+			return new byte[0];
+		}
+	}
 	
 }
