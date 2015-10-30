@@ -125,6 +125,8 @@ public enum ErrorCode {
 	TASK_NOTEXIST( 12801, "任务不存在" ),
 	/** 12802 - 不是航行状态 */
 	FELLT_NOTSAIL( 12802, "不是航行状态" ),
+	/** 12803 - 还有队友不是悬停状态 */
+	TEAM_NOTHOVER( 12803, "还有队友不是悬停状态" ),
 	
 	
 	
