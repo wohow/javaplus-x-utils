@@ -127,6 +127,8 @@ public enum ErrorCode {
 	FELLT_NOTSAIL( 12802, "不是航行状态" ),
 	/** 12803 - 还有队友不是悬停状态 */
 	TEAM_NOTHOVER( 12803, "还有队友不是悬停状态" ),
+	/** 12804 - 没有奖可以抽 */
+	NOT_LOTTERY( 12804, "没有奖可以抽" ),
 	
 	
 	
