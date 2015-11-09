@@ -129,6 +129,8 @@ public enum ErrorCode {
 	TEAM_NOTHOVER( 12803, "还有队友不是悬停状态" ),
 	/** 12804 - 没有奖可以抽 */
 	NOT_LOTTERY( 12804, "没有奖可以抽" ),
+	/** 12805 - 次数不足 */
+	TIMES_LAZYWEIGHT( 12805, "次数不足" ),
 	
 	
 	

@@ -20,8 +20,11 @@ public class LuaValue {
 			boo = lo.getBoolean();
 		}else if( lo.isNumber() ){
 			number = lo.getNumber();
+			string = lo.getString();
+			object = number;
 		}else if( lo.isString() ){
 			string = lo.getString();
+			object = string;
 		}else if( lo.isJavaObject() ){
 			object = lo.getObject();
 		}
