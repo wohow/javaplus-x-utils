@@ -75,8 +75,9 @@ public class Lua {
 			// 参数压栈
 			int len = args.length;
 			try {
-				for( int i = 0; i < len; i++ )
+				for( int i = 0; i < len; i++ ){
 					luaState.pushObjectValue( args[i] );
+				}
 			} catch (LuaException e) { e.printStackTrace(); }
 		
 			// 调用!! 一共len个参数, retlen 返回值
