@@ -2,8 +2,11 @@ package x.javaplus.string;
 
 import java.io.UnsupportedEncodingException;
 import java.text.MessageFormat;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import x.javaplus.collections.Lists;
 
 
 /**
@@ -37,6 +40,21 @@ public class StringUtil {
 		return isNum.matches() ? str : "0";
 	}
 
+	/**
+	 * 将字符串转成一个int列表
+	 * @param temp
+	 * @return
+	 */
+	public static List<Integer> arrayToInteger( String content, String regex ) {
+		List<Integer> ret = Lists.newArrayList();
+		if( content == null || content.isEmpty() )
+			return ret;
+		String[] array = content.split(regex);
+		for( int i = 0; i < array.length; i++ )
+			ret.add( Integer.parseInt( convertNumberString(array[i]) ) );
+		return ret;
+	}
+	
 	/**
 	 * 创建一个与给定的模式和使用MessageFormat格式化给定的参数
 	 * @param pattern
@@ -72,5 +90,7 @@ public class StringUtil {
 			return new byte[0];
 		}
 	}
+
+
 	
 }

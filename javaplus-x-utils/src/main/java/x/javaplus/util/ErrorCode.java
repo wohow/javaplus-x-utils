@@ -131,6 +131,10 @@ public enum ErrorCode {
 	NOT_LOTTERY( 12804, "没有奖可以抽" ),
 	/** 12805 - 次数不足 */
 	TIMES_LAZYWEIGHT( 12805, "次数不足" ),
+	/** 12806 - 超时 */
+	OVERTIME( 12806, "超时" ),
+	/** 12806 - 没完成 */
+	NOT_COMPLETE( 12807, "没完成" ),
 	
 	
 	
