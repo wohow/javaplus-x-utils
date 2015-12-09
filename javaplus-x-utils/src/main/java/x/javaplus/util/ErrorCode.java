@@ -133,8 +133,10 @@ public enum ErrorCode {
 	TIMES_LAZYWEIGHT( 12805, "次数不足" ),
 	/** 12806 - 超时 */
 	OVERTIME( 12806, "超时" ),
-	/** 12806 - 没完成 */
+	/** 12807 - 没完成 */
 	NOT_COMPLETE( 12807, "没完成" ),
+	/** 12808 - 含有相同的 */
+	HAVE_EQUAL( 12808, "含有相同的" ),
 	
 	
 	
