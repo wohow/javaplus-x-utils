@@ -35,8 +35,8 @@ public class Csv {
 		fileName = generatorFileName();
 		
 		content = Util.File.getLines( filePath );
-		if( content.size() <= 2 ) 
-			throw new RuntimeException( filePath+" 文件小于等于两行数据" );
+		if( content.size() < 2 ) 
+			throw new RuntimeException( filePath+" 文件小于两行数据" );
 		
 		// 包装 类型和字段名
 		wrapTypeAndName( );
