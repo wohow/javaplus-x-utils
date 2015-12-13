@@ -721,7 +721,7 @@ public class Util {
 		 * @param string
 		 * @return
 		 */
-		public static long wrapTime(String string) {
+		public static long parseTime(String string) {
 			try {
 				final SimpleDateFormat sdf = new SimpleDateFormat(
 						"yyyy-MM-dd HH:mm:ss");
