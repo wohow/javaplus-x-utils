@@ -137,6 +137,8 @@ public enum ErrorCode {
 	NOT_COMPLETE( 12807, "没完成" ),
 	/** 12808 - 含有相同的 */
 	HAVE_EQUAL( 12808, "含有相同的" ),
+	/** 12809 - 玩家等级不足 */
+	LEVEL_LAZYWEIGHT( 12809, "玩家等级不足" ),
 	
 	
 	
