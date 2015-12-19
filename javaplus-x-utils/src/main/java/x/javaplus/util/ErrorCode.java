@@ -139,6 +139,8 @@ public enum ErrorCode {
 	HAVE_EQUAL( 12808, "含有相同的" ),
 	/** 12809 - 玩家等级不足 */
 	LEVEL_LAZYWEIGHT( 12809, "玩家等级不足" ),
+	/** 12810 - 需要前置条件 */
+	NEED_FRONT_CONDITION( 12810, "需要前置条件" ),
 	
 	
 	
